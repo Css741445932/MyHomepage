@@ -8,8 +8,8 @@
     "intro": "我是成珊珊，正在用代码、记录和项目搭建自己的成长轨迹。"
   },
   "contact": {
-    "email": "your-email@example.com",
-    "github": "https://github.com/yourname"
+    "email": "741445932@qq.com",
+    "github": "https://github.com/Css741445932"
   },
   "learning": [
     {
@@ -18,10 +18,17 @@
       "title": "第一次写响应式导航",
       "learned": "学习 Flexbox、媒体查询和移动端导航布局。",
       "problem": "手机宽度下导航项挤在一起，点击区域太小。",
-      "solution": "用媒体查询改为两行布局，并增大按钮点击区域，已解决。",
-      "status": "resolved",
-      "tags": ["HTML/CSS", "响应式"],
-      "evidenceUrl": ""
+      "solution": "用媒体查询改为两行布局，并增大按钮点击区域，",
+      "status": "ongoing",
+      "tags": [
+        "HTML/CSS",
+        "响应式"
+      ],
+      "evidenceUrl": "",
+      "startDate": "2026-11-23",
+      "endDate": "2026-11-23",
+      "imageUrls": [],
+      "videoUrl": ""
     },
     {
       "id": "learn-002",
@@ -31,7 +38,10 @@
       "problem": "搜索和状态筛选同时生效时逻辑混乱。",
       "solution": "把筛选条件集中到 state 对象，再统一 render，已解决。",
       "status": "resolved",
-      "tags": ["JavaScript", "交互"],
+      "tags": [
+        "JavaScript",
+        "交互"
+      ],
       "evidenceUrl": ""
     },
     {
@@ -42,7 +52,10 @@
       "problem": "提交前不知道哪些文件该忽略，临时文件容易混进仓库。",
       "solution": "正在整理 .gitignore 规则，尚未完全解决。",
       "status": "ongoing",
-      "tags": ["Git", "工程化"],
+      "tags": [
+        "Git",
+        "工程化"
+      ],
       "evidenceUrl": ""
     }
   ],
@@ -73,7 +86,16 @@
       "problem": "需要一个能集中展示学习记录、技能证据、项目作品和联系方式的个人主页，并且内容可以自己维护。",
       "role": "负责页面结构、科技感视觉、学习记录筛选与时间线、编辑页表单和 localStorage 数据保存。",
       "tech": "HTML、CSS、JavaScript、localStorage、Git",
-      "difficulty": "最大困难是把搜索、状态筛选、标签筛选和排序组合起来后，时间线仍能按年月正确分组并保持展开收起状态。"
+      "difficulty": "最大困难是把搜索、状态筛选、标签筛选和排序组合起来后，时间线仍能按年月正确分组并保持展开收起状态。",
+      "startDate": "2026-11-21",
+      "endDate": "2026-11-23",
+      "title": "个人成长主页",
+      "learned": "展示自我",
+      "solution": "负责页面结构、科技感视觉、学习记录筛选与时间线、编辑页表单和 localStorage 数据保存。",
+      "status": "resolved",
+      "tags": [],
+      "imageUrls": [],
+      "videoUrl": ""
     }
   ]
 }
