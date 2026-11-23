@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成珊珊 · 项目作品与联系方式</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="projects">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">成珊珊 · 成长主页</a>
+      <nav class="nav">
+        <a href="index.html">关于我</a>
+        <a href="learning.html">学习记录</a>
+        <a href="skills.html">技能展示</a>
+        <a href="projects.html" aria-current="page">项目作品</a>
+        <a href="edit.html">编辑内容</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>项目作品</h1>
+    <p class="lead">按时间线记录项目从开发到落地的过程，包含遇到的问题与解决方案。支持搜索、状态和标签筛选。</p>
+    
+    <section class="stats" id="projects-stats"></section>
+    
+    <section class="toolbar">
+      <label>搜索
+        <input id="search-input" type="search" placeholder="搜索项目名称、问题、标签...">
+      </label>
+      <label>状态
+        <select id="status-filter">
+          <option value="all">全部状态</option>
+          <option value="resolved">已完成</option>
+          <option value="ongoing">进行中</option>
+          <option value="unresolved">未完成</option>
+        </select>
+      </label>
+      <label>标签
+        <select id="tag-filter">
+          <option value="all">全部标签</option>
+        </select>
+      </label>
+      <label>排序
+        <select id="sort-filter">
+          <option value="desc">最新在前</option>
+          <option value="asc">最早在前</option>
+        </select>
+      </label>
+    </section>
+
+    <p id="result-count" class="muted"></p>
+    <div id="timeline"></div>
+    <div id="empty-state" class="empty hidden">
+      没有匹配的项目。可以清除筛选，或去 <a href="edit.html">编辑页</a> 添加。
+    </div>
+
+    <section class="grid-2" style="margin-top:40px; border-top: 1px solid var(--line); padding-top: 28px;">
+      <article class="card">
+        <h2>联系方式</h2>
+        <p>邮箱：<a id="project-contact-email" href="#">加载中...</a></p>
+        <p>GitHub：<a id="project-contact-github" href="#" target="_blank" rel="noopener">加载中...</a></p>
+      </article>
+
+      <article class="card">
+        <h2>联系表单</h2>
+        <form id="contact-form" class="form-grid" novalidate>
+          <label>姓名
+            <input name="name" type="text" placeholder="你的姓名">
+          </label>
+          <label>邮箱
+            <input name="email" type="email" placeholder="you@example.com">
+          </label>
+          <label class="full">留言
+            <textarea name="message" placeholder="想说的话..."></textarea>
+          </label>
+          <div class="full actions">
+            <button class="btn" type="submit">提交留言</button>
+          </div>
+          <p id="form-message" class="notice full" role="status">前端演示表单，不会真正发送邮件。</p>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">成珊珊 · 个人成长主页 · 项目作品与联系方式</div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

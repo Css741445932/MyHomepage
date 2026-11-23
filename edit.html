@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成珊珊 · 编辑内容</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="edit">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">成珊珊 · 成长主页</a>
+      <nav class="nav">
+        <a href="index.html">关于我</a>
+        <a href="learning.html">学习记录</a>
+        <a href="skills.html">技能展示</a>
+        <a href="projects.html">项目作品</a>
+        <a href="edit.html" aria-current="page">编辑内容</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>编辑内容</h1>
+    <p class="lead">在这里填写后点击“保存全部”。数据保存在浏览器 localStorage。发布前请导出 data.json 放到 data/ 目录并提交 Git。</p>
+    <p id="edit-message" class="notice" role="status">编辑后记得保存。</p>
+
+    <section class="card" style="margin-top:18px">
+      <h2>关于我与联系方式</h2>
+      <div class="form-grid">
+        <label>姓名<input id="edit-name" type="text"></label>
+        <label>专业<input id="edit-major" type="text"></label>
+        <label>年级<input id="edit-grade" type="text"></label>
+        <label>学习方向<input id="edit-direction" type="text"></label>
+        <label class="full">一句话介绍<textarea id="edit-intro"></textarea></label>
+        <label>邮箱<input id="edit-email" type="email"></label>
+        <label>GitHub 主页<input id="edit-github" type="url"></label>
+      </div>
+    </section>
+
+    <!-- 索引与搜索栏（已取消固定） -->
+    <section class="card" style="margin-top:18px; border-color: var(--accent);">
+      <h2>🔍 索引与搜索</h2>
+      <p class="muted" style="font-size: 13px; margin-bottom: 12px;">快速查找你需要修改的记录，选中后对应的表单会显示在下方。</p>
+      <div class="toolbar" style="margin-bottom: 0;">
+        <label>关键字搜索
+          <input id="edit-search" type="search" placeholder="搜索标题、内容...">
+        </label>
+        <label>选择板块
+          <select id="edit-type-filter">
+            <option value="all">全部显示</option>
+            <option value="learning">仅学习记录</option>
+            <option value="skills">仅技能展示</option>
+            <option value="projects">仅项目作品</option>
+          </select>
+        </label>
+        <label>开始时间
+          <input id="edit-start-date" type="date">
+        </label>
+        <label>结束时间
+          <input id="edit-end-date" type="date">
+        </label>
+      </div>
+    </section>
+
+    <section class="card edit-section" id="section-learning" style="margin-top:18px">
+      <h2>学习记录</h2>
+      <div id="learning-list"></div>
+      <form id="learning-form" class="form-grid" style="margin-top:16px">
+        <input type="hidden" id="learning-editing-id" value="">
+        <label>开始时间<input name="startDate" type="date" required></label>
+        <label>结束时间<input name="endDate" type="date" required></label>
+        <label class="full">标题<input name="title" type="text" required></label>
+        <label class="full">学了什么<textarea name="learned" required></textarea></label>
+        <label class="full">遇到什么问题<textarea name="problem" required></textarea></label>
+        <label class="full">怎么解决 / 还没解决什么<textarea name="solution" required></textarea></label>
+        <label>状态
+          <select name="status">
+            <option value="resolved">已解决</option>
+            <option value="ongoing">进行中</option>
+            <option value="unresolved">未解决</option>
+          </select>
+        </label>
+        <label>标签（逗号分隔）<input name="tags" type="text" placeholder="HTML/CSS, 交互"></label>
+        <label class="full">证据 URL（可选）<input name="evidenceUrl" type="url" placeholder="https://..."></label>
+        <label class="full">图片链接（支持多个，用逗号分隔）<input name="imageUrls" type="text" placeholder="https://...jpg, https://...png"></label>
+        <label class="full">视频链接（mp4 格式或 B站 iframe 链接）<input name="videoUrl" type="text" placeholder="https://...mp4"></label>
+        <div class="full actions">
+          <button class="btn" type="submit" id="learning-submit-btn">添加学习记录</button>
+          <button class="btn ghost hidden" type="button" id="learning-cancel-btn">取消编辑</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card edit-section" id="section-skills" style="margin-top:18px">
+      <h2>技能展示</h2>
+      <div id="skills-list-edit"></div>
+      <form id="skill-form" class="form-grid" style="margin-top:16px">
+        <input type="hidden" id="skill-editing-id" value="">
+        <label>开始时间<input name="startDate" type="date" required></label>
+        <label>结束时间<input name="endDate" type="date" required></label>
+        <label class="full">技能名称/标题<input name="title" type="text" required></label>
+        <label class="full">学了什么/能力说明<textarea name="learned" required></textarea></label>
+        <label class="full">遇到什么问题<textarea name="problem" required></textarea></label>
+        <label class="full">怎么解决<textarea name="solution" required></textarea></label>
+        <label>状态
+          <select name="status">
+            <option value="resolved">已掌握</option>
+            <option value="ongoing">学习中</option>
+            <option value="unresolved">待解决</option>
+          </select>
+        </label>
+        <label>标签（逗号分隔）<input name="tags" type="text" placeholder="CSS, 布局"></label>
+        <label class="full">代码片段<textarea name="codeSnippet" placeholder="粘贴代码片段"></textarea></label>
+        <label class="full">图片链接（支持多个，用逗号分隔）<input name="imageUrls" type="text" placeholder="https://...jpg, https://...png"></label>
+        <label class="full">视频链接（mp4 格式）<input name="videoUrl" type="text" placeholder="https://...mp4"></label>
+        <div class="full actions">
+          <button class="btn" type="submit" id="skill-submit-btn">添加技能</button>
+          <button class="btn ghost hidden" type="button" id="skill-cancel-btn">取消编辑</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card edit-section" id="section-projects" style="margin-top:18px">
+      <h2>项目作品</h2>
+      <div id="projects-list-edit"></div>
+      <form id="project-form" class="form-grid" style="margin-top:16px">
+        <input type="hidden" id="project-editing-id" value="">
+        <label>开始时间<input name="startDate" type="date" required></label>
+        <label>结束时间<input name="endDate" type="date" required></label>
+        <label class="full">项目名称<input name="title" type="text" required></label>
+        <label class="full">项目说明/解决什么问题<textarea name="learned" required></textarea></label>
+        <label class="full">遇到最大困难<textarea name="problem" required></textarea></label>
+        <label class="full">怎么解决/我负责什么<textarea name="solution" required></textarea></label>
+        <label>状态
+          <select name="status">
+            <option value="resolved">已完成</option>
+            <option value="ongoing">进行中</option>
+            <option value="unresolved">未完成</option>
+          </select>
+        </label>
+        <label>标签（逗号分隔）<input name="tags" type="text" placeholder="前端, 项目实战"></label>
+        <label class="full">使用技术（逗号分隔）<input name="tech" type="text" placeholder="HTML/CSS/JS"></label>
+        <label class="full">图片链接（支持多个，用逗号分隔）<input name="imageUrls" type="text" placeholder="https://...jpg, https://...png"></label>
+        <label class="full">视频链接（mp4 格式）<input name="videoUrl" type="text" placeholder="https://...mp4"></label>
+        <div class="full actions">
+          <button class="btn" type="submit" id="project-submit-btn">添加项目</button>
+          <button class="btn ghost hidden" type="button" id="project-cancel-btn">取消编辑</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <h2>保存与数据管理</h2>
+      <div class="actions">
+        <button id="save-btn" class="btn" type="button">保存全部</button>
+        <button id="export-btn" class="btn ghost" type="button">导出 data.json</button>
+        <label class="btn ghost" style="display:inline-flex;cursor:pointer">
+          导入 data.json
+          <input id="import-file" type="file" accept="application/json" style="display:none">
+        </label>
+        <button id="reset-btn" class="btn danger" type="button">恢复示例数据</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">成珊珊 · 个人成长主页 · 内容编辑</div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/edit.js"></script>
+</body>
+</html>

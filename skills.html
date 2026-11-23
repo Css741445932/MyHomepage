@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成珊珊 · 技能展示</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="skills">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">成珊珊 · 成长主页</a>
+      <nav class="nav">
+        <a href="index.html">关于我</a>
+        <a href="learning.html">学习记录</a>
+        <a href="skills.html" aria-current="page">技能展示</a>
+        <a href="projects.html">项目作品</a>
+        <a href="edit.html">编辑内容</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>技能展示</h1>
+    <p class="lead">按时间线记录技能的掌握过程，包含学到的能力、遇到的问题及解决方式。支持搜索、状态和标签筛选。</p>
+    
+    <section class="stats" id="skills-stats"></section>
+    
+    <section class="toolbar">
+      <label>搜索
+        <input id="search-input" type="search" placeholder="搜索技能名称、问题、标签...">
+      </label>
+      <label>状态
+        <select id="status-filter">
+          <option value="all">全部状态</option>
+          <option value="resolved">已掌握</option>
+          <option value="ongoing">学习中</option>
+          <option value="unresolved">待解决</option>
+        </select>
+      </label>
+      <label>标签
+        <select id="tag-filter">
+          <option value="all">全部标签</option>
+        </select>
+      </label>
+      <label>排序
+        <select id="sort-filter">
+          <option value="desc">最新在前</option>
+          <option value="asc">最早在前</option>
+        </select>
+      </label>
+    </section>
+
+    <p id="result-count" class="muted"></p>
+    <div id="timeline"></div>
+    <div id="empty-state" class="empty hidden">
+      没有匹配的技能。可以清除筛选，或去 <a href="edit.html">编辑页</a> 添加。
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">成珊珊 · 个人成长主页 · 技能展示</div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
